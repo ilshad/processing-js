@@ -842,6 +842,7 @@ module.exports = function finalizeProcessing(Processing, options) {
             };
           }(this));
           this.pending++;
+          img.crossOrigin = "anonymous";
           img.src = href;
         }
 
