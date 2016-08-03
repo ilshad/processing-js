@@ -836,13 +836,13 @@ module.exports = function finalizeProcessing(Processing, options) {
         // No image in the DOM, kick-off a background load
         if (!img) {
           img = new Image();
+          img.crossOrigin = "anonymous";
           img.onload = (function(owner) {
             return function() {
               owner.pending--;
             };
           }(this));
           this.pending++;
-          img.crossOrigin = "anonymous";
           img.src = href;
         }
 
@@ -18926,6 +18926,8 @@ module.exports = function setupParser(Processing, options) {
       var img = document.createElement('img');
 
       pimg.sourceImg = img;
+
+      img.crossOrigin = "anonymous";
 
       img.onload = (function(aImage, aPImage, aCallback) {
         var image = aImage;
